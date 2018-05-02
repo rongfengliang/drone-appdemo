@@ -1,0 +1,11 @@
+{
+  "name": "drone-appdemo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@git.yonyou.com:cloud-native/drone-appdemo.git",
+  "author": "dalongrong <1141591465@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "shortid": "^2.2.8"
+  }
+}
