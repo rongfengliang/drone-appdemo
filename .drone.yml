@@ -4,9 +4,29 @@ pipeline:
     commands:
       - go build
       - go test
-
+      - ls  .
   frontend:
     image: node:6
     commands:
       - npm install
       - npm test
+  docker:
+    group: deploy
+    image: plugins/docker
+    registry: youprivatedockerregistry # i use harbor
+    repo: youprivatedockerregistry/droneci/drone-demoapp
+    dockerfile: Dockerfile
+    username: dockerpush #   harbor username
+    password: Dockerpushpassword  # harbor userpassword
+
+  s3push:
+    group: deploy
+    image: plugins/s3
+    bucket: droneproject
+    source: ./**
+    access_key: access_key
+    secret_key: secret_key
+    target: /drone-appdemo
+    region: us-west-1
+    path_style: true
+    endpoint: you minio address # my minio address 
